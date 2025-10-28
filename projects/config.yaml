@@ -1,0 +1,26 @@
+
+llm:
+  faq_generator:
+    provider: http://localhost:11434/v1
+    model: mistral-nemo
+    temperature: 0.3
+    api_key: TANTOFAZ
+
+  rag_answer:
+    provider: http://localhost:11434/v1
+    model: mistral-nemo
+    temperature: 0.3
+    api_key: TANTOFAZ
+
+embedding:
+  model: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+
+retrieval:
+  top_k: 2
+
+indexing:
+  questions_per_text: 3
+
+paths:
+  projects_dir: ./projects
+  prompts_dir: ./prompts

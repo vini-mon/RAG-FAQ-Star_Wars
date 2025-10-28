@@ -1,0 +1,15 @@
+# requirements.txt
+eel
+langchain
+langchain-core
+langchain-community
+langchain-openai
+pandas
+numpy
+scikit-learn
+pyyaml
+sentence-transformers
+tqdm
+# requirements.txt
+# ... rest of the requirements ...
+openai # Removido temporariamente, adicione se der erro depois

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Assistente RAG - Star Wars</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <header>
+                <h1>Assistente RAG - Star Wars</h1>
+                <p>Pergunte ao Holocron sobre o universo Star Wars.</p>
+            </header>
+
+            <main>
+                <div class="input-section">
+                    <label for="question-input">Faça sua pergunta:</label>
+                    <textarea id="question-input" rows="3" placeholder="Ex: Quem treinou o Mestre Yoda?"></textarea>
+
+                    <button id="ask-button">
+                        Enviar Pergunta
+                    </button>
+                </div>
+
+                <div class="output-section">
+                    <h2>Resposta do Assistente</h2>
+                    <div id="results-container">
+                        <pre id="results-log">Aguardando sua pergunta...</pre>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <script type="text/javascript" src="/eel.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+
+</html>

@@ -1,0 +1,25 @@
+# Ambiente Virtual
+.venv/
+venv/
+*/.venv/
+*/venv/
+
+# Arquivos de Cache e Compilados do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Arquivos de Build/Instalação do Setuptools (exceto o .tar.gz final)
+*.egg-info/
+build/
+dist/
+*.egg
+
+# Logs (gerados durante a execução)
+*.log
+
+# Arquivos do Jupyter Notebook / IDEs
+.ipynb_checkpoints/
+.vscode/
+*.code-workspace

@@ -1,0 +1,3 @@
+https://github.com/vini-mon/RAG-FAQ-Star_Wars
+
+https://colab.research.google.com/drive/1AScSjRKifsJ72MU5JLrsZemPfh312-tr?usp=sharing\
