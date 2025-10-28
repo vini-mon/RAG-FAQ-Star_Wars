@@ -1,0 +1,22 @@
+Generate exactly {k} question and answer pairs based on the provided text.
+
+Each question should:
+- Be directly related to the content.
+- Be relevant and informative.
+- Avoid being too general or too obvious.
+
+Each answer should:
+- Be short, direct, and informative.
+- Avoid repeating the question.
+- Not include external assumptions.
+- Focus mainly on RECURSO_PROVIDO, RECURSOS_PRE_REQUISITOS, RECURSOS_INFO_ADICIONAL.
+- Fazer perguntas em que as respostas estejam disponíveis em RECURSO_PROVIDO.
+
+Return the output strictly as a JSON list of objects in this format:
+[
+  {
+    "question": "string",
+    "answer": "string"
+  },
+  ...
+]

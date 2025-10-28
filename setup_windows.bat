@@ -1,50 +1,65 @@
 @echo off
 echo ===========================================
-echo   Instalando dependencias do RAG-FAQ Web
+echo    Instalando dependencias do RAG-FAQ Web
 echo ===========================================
 
-REM Verifica se Python está instalado
-python --version >nul 2>&1
-if errorlevel 1 (
-    echo ERRO: Python nao encontrado. Instale Python 3.10+ e adicione ao PATH.
-    pause
-    exit /b
+:: Verifica Python... (mantém igual)
+where python >nul 2>nul
+if %errorlevel% neq 0 (
+    echo ERRO: Python nao encontrado. Instale Python 3.10 ou superior.
+    exit /b 1
 )
 
-echo Atualizando pip e instalando dependencias do requirements.txt...
-pip install --upgrade pip
-pip install -r requirements.txt
-if errorlevel 1 (
+:: Instala requirements... (mantém igual)
+echo.
+echo Atualizando pip e instalando dependencias...
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+if %errorlevel% neq 0 (
     echo ERRO: Falha ao instalar dependencias do requirements.txt.
-    pause
-    exit /b
+    exit /b 1
 )
 
 echo.
-echo Instalando pacote rag_faq a partir do arquivo .tar.gz...
-set ARCHIVE_NAME=rag_faq.tar.gz REM <<< Certifique-se que o nome do seu arquivo e este
+echo ===========================================
+echo   Instalando pacote local rag_faq em modo editavel...
+echo ===========================================
 
-if exist "%ARCHIVE_NAME%" (
-    pip install "%ARCHIVE_NAME%"
-    if errorlevel 1 (
-        echo ERRO: Falha ao instalar %ARCHIVE_NAME% com pip.
+set RAG_FAQ_SOURCE_DIR=rag_faq-0.1.0
+
+if exist "%RAG_FAQ_SOURCE_DIR%\" (
+    cd "%RAG_FAQ_SOURCE_DIR%"
+    if exist "setup.py" (
+        echo Instalando em modo editavel a partir de %CD% ...
+        python -m pip install -e . 
+        if %errorlevel% neq 0 (
+            echo ERRO: Falha ao instalar rag_faq com 'pip install -e .'.
+            cd ..
+            pause
+            exit /b 1
+        )
+        cd ..
+    ) else (
+        echo ERRO: setup.py nao encontrado dentro de %RAG_FAQ_SOURCE_DIR%!
+        cd ..
         pause
-        exit /b
+        exit /b 1
     )
 ) else (
-    echo ERRO: Arquivo '%ARCHIVE_NAME%' nao encontrado na raiz!
-    echo Certifique-se de ter criado o .tar.gz com o codigo corrigido.
+    echo ERRO: Diretorio '%RAG_FAQ_SOURCE_DIR%' nao encontrado na raiz!
     pause
-    exit /b
+    exit /b 1
 )
 
 echo.
 echo Instalacao concluida!
 echo.
+echo Instalacao concluida!
+echo.
 echo Recomendacao: Crie e ative um ambiente virtual antes de rodar a aplicacao.
-echo Exemplo (no PowerShell ou CMD):
+echo Exemplo:
 echo     python -m venv .venv
-echo     .\.venv\Scripts\activate
+echo     .venv\Scripts\activate
 echo.
 echo Para iniciar o app (com ambiente virtual ativo, se usado):
 echo     python app.py

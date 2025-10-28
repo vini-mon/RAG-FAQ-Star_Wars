@@ -23,19 +23,31 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Instala o pacote rag_faq diretamente do arquivo .tar.gz
-echo "Instalando pacote rag_faq a partir do arquivo .tar.gz..."
-ARCHIVE_NAME="rag_faq.tar.gz" # <<< Certifique-se que o nome do seu arquivo é este
+echo
+echo "==========================================="
+echo "  Instalando pacote rag_faq..."
+echo "==========================================="
 
-if [ -f "$ARCHIVE_NAME" ]; then
-    pip install "$ARCHIVE_NAME"
-    if [ $? -ne 0 ]; then
-        echo "ERRO: Falha ao instalar $ARCHIVE_NAME com pip."
-        exit 1
-    fi
+# Caminhos possíveis para o arquivo .tar ou .tar.gz dentro da pasta rag_faq-0.1.0
+TAR_PATH="rag_faq-0.1.0/rag_faq.tar"
+TAR_GZ_PATH="rag_faq-0.1.0/rag_faq.tar.gz" # Ajustado para incluir o diretório
+
+# Verifica qual existe e instala
+if [ -f "$TAR_GZ_PATH" ]; then
+    echo "Encontrado: $TAR_GZ_PATH"
+    pip install "$TAR_GZ_PATH"
+elif [ -f "$TAR_PATH" ]; then
+    echo "Encontrado: $TAR_PATH"
+    pip install "$TAR_PATH"
 else
-    echo "ERRO: Arquivo '$ARCHIVE_NAME' não encontrado na raiz!"
-    echo "Certifique-se de ter criado o .tar.gz com o código corrigido."
+    echo "ERRO: Nenhum arquivo .tar ou .tar.gz encontrado dentro de rag_faq-0.1.0!"
+    echo "Certifique-se de que '$TAR_PATH' ou '$TAR_GZ_PATH' existe."
+    exit 1
+fi
+
+# Verifica se a instalação do pip foi bem-sucedida
+if [ $? -ne 0 ]; then
+    echo "ERRO: Falha ao instalar o pacote rag_faq."
     exit 1
 fi
 
@@ -48,4 +60,4 @@ echo "    source .venv/bin/activate"
 echo
 echo "Para iniciar o app (com ambiente virtual ativo, se usado):"
 echo "    python app.py"
-echo "    (E acesse http://localhost:8000 no navegador)"
+echo "    (O navegador deve abrir automaticamente em http://localhost:8000)"

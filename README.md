@@ -49,23 +49,16 @@ cd RAG-FAQ-Star_Wars
 
 **3. Instale as Dependências Python:**
 
-Certifique-se de ter o arquivo rag_faq.tar.gz (contendo o código fonte corrigido) na raiz do projeto.
+* **Windows:** Execute o script `setup_windows.bat` clicando duas vezes nele ou rodando no Prompt de Comando/PowerShell[cite: 1]:
+    ```bash
+    .\setup_windows.bat
+    ```
+* **Linux/WSL:** Torne o script executável e rode-o:
+    ```bash
+    chmod +x setup_linux.sh
+    ./setup_linux.sh
+    ```
 
-Windows: Execute o script setup_windows.bat clicando duas vezes nele ou rodando no Prompt de Comando/PowerShell:
-
-```bash
-
-.\setup_windows.bat
-Linux/WSL: Torne o script executável e rode-o:
-
-```
-
-```bash
-
-chmod +x setup_linux.sh
-./setup_linux.sh
-
-```
 
 **4. Baixe o Modelo LLM: Após instalar o Ollama e as dependências Python, baixe o modelo mistral-nemo (isso pode levar algum tempo e requer ~7.1 GB de espaço):**
 
@@ -128,8 +121,7 @@ Este protótipo utiliza um modelo de linguagem grande (LLM) rodando localmente a
 	│ ├── faq.csv
 	│ └── embeddings.npy
 	│
-	├── rag_faq-0.1.0/ 		# Pasta raiz do pacote RAG local (descompactada para referência no dev)
-	│ └── rag_faq.tar.gz 		# Arquivo compactado com o código RAG corrigido (para instalação via pip)
+	├── rag_faq-0.1.0/ 		# Pasta raiz do pacote RAG local 
 	│
 	└── web/ 				# Arquivos do frontend (HTML, CSS, JS, Imagem)
 
